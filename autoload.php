@@ -1,7 +1,7 @@
 <?php
 
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 http://www.mocentre.com All rights reserved.
+// | Copyright (c) 2016 http://www.dingxiaoyu.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Author: dingdayu dingxiaoyu@mocentre.com>
 // +----------------------------------------------------------------------
