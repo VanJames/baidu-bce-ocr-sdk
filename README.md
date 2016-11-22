@@ -6,6 +6,10 @@
 
 ### composer 安装
 
+```
+composer require dingdayu/baidu-bce-ocr-sdk
+```
+
 ### 直接下载安装
 
 ```
