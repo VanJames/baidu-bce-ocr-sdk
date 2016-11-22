@@ -1,0 +1,42 @@
+{
+  "name": "dingdayu/baidu-bce-ocr-sdk",
+  "description": "baidu bce ocr php.",
+  "version": "0.1.3-dev",
+  "type": "library",
+  "keywords": [
+    "baidu",
+    "bce",
+    "ocr"
+  ],
+  "homepage": "",
+  "time": "2016-11-22 18:28:54",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "dingdayu",
+      "email": "614422099@qq.com",
+      "homepage": "http://blog.dingxiaoyu.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "614422099@qq.com",
+    "issues": "irc://irc.freenode.org/composer",
+    "wiki": "irc://irc.freenode.org/composer",
+    "source": "irc://irc.freenode.org/composer"
+  },
+  "require": {
+    "php": ">=5.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "BaiduBceOcrSdk": "src/"
+    }
+  },
+  "extra": {
+    "version": "0.1.3-dev"
+  }
+}
