@@ -7,28 +7,27 @@
     "bce",
     "ocr"
   ],
-  "homepage": "",
-  "time": "2016-11-22 18:28:54",
+  "homepage": "https://github.com/dingdayu/baidu-bce-ocr-sdk/",
   "license": "Apache-2.0",
   "authors": [
     {
       "name": "dingdayu",
       "email": "614422099@qq.com",
       "homepage": "http://blog.dingxiaoyu.com",
-      "role": "Developer"
+      "role": "Admin"
     }
   ],
   "support": {
     "email": "614422099@qq.com",
-    "issues": "irc://irc.freenode.org/composer",
-    "wiki": "irc://irc.freenode.org/composer",
-    "source": "irc://irc.freenode.org/composer"
+    "issues": "https://github.com/dingdayu/baidu-bce-ocr-sdk/issues",
+    "wiki": "https://github.com/dingdayu/baidu-bce-ocr-sdk/wiki",
+    "source": "https://github.com/dingdayu/baidu-bce-ocr-sdk/releases"
   },
   "require": {
     "php": ">=5.4"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0"
+    "phpunit/phpunit": "~5.0"
   },
   "autoload": {
     "psr-0": {
