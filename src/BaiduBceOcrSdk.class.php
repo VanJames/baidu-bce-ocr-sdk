@@ -200,7 +200,7 @@ class BaiduBceOcrSdk
      * @author: dingdayu(614422099@qq.com)
      *
      * @param string $url    请求URL
-     * @param array $header  请求头
+     * @param array  $header 请求头
      * @param string $data   post内容
      *
      * @return mixed
