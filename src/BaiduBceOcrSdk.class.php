@@ -12,8 +12,7 @@
 // +----------------------------------------------------------------------
 // | Explain: 图像识别测试类
 // +----------------------------------------------------------------------
-
-date_default_timezone_set('UTC');
+namespace BadiduBCE;
 
 class BaiduBceOcrSdk
 {
@@ -36,6 +35,7 @@ class BaiduBceOcrSdk
         if (!function_exists('curl_init')) {
             throw new \Exception('not support openssl_sign', 11001);
         }
+        date_default_timezone_set('UTC');
     }
 
     /**
