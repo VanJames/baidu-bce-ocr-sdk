@@ -31,7 +31,7 @@ class BaiduBceOcrSdk
     /**
      * BaiduBceOcrSdk constructor.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct()
     {
@@ -60,7 +60,7 @@ class BaiduBceOcrSdk
             if ($path[0] == '/') {
                 return self::urlEncodeExceptSlash($path);
             } else {
-                return '/' . self::urlEncodeExceptSlash($path);
+                return '/'.self::urlEncodeExceptSlash($path);
             }
         }
     }
@@ -95,8 +95,8 @@ class BaiduBceOcrSdk
         $method = 'POST';
 
         // 签名参数
-        $palms = array();
-        $timestamp = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
+        $palms = [];
+        $timestamp = date('Y-m-d').'T'.date('H:i:s').'Z';
 
         //生成签名
         $Authorization = self::getSigner($host, $method, $path, $palms, $timestamp);
@@ -116,9 +116,9 @@ class BaiduBceOcrSdk
         ];
 
         //编码image参数内容
-        $data = 'image=' . urlencode($encoded);
+        $data = 'image='.urlencode($encoded);
 
-        $url = 'http://' . $host . $path;
+        $url = 'http://'.$host.$path;
         $output = self::curl($url, $head, $data);
         //转换成数组格式
         $result = json_decode($output, true);
@@ -131,27 +131,27 @@ class BaiduBceOcrSdk
      *
      * @author: dingdayu(614422099@qq.com)
      *
-     * @param string $host 请求的域名
-     * @param string $httpMethod 请求类型：POST/GET
-     * @param string $path 请求url路径
-     * @param string $header Heard请求头
-     * @param string $timestamp UTC时间
+     * @param string $host          请求的域名
+     * @param string $httpMethod    请求类型：POST/GET
+     * @param string $path          请求url路径
+     * @param string $header        Heard请求头
+     * @param string $timestamp     UTC时间
      *
      * @return string
      */
     public static function getSigner($host = '', $httpMethod = '', $path = '', $header = '', $timestamp = '')
     {
         $expirationPeriodInSeconds = '3600';
-        $authStringPrefix = 'bce-auth-v1/' . self::$AK . "/{$timestamp}/{$expirationPeriodInSeconds}";
+        $authStringPrefix = 'bce-auth-v1/'.self::$AK."/{$timestamp}/{$expirationPeriodInSeconds}";
         $SigningKey = hash_hmac('SHA256', $authStringPrefix, self::$SK);
         $CanonicalHeaders1 = 'host;x-bce-date';
-        $CanonicalHeaders2 = "host:{$host}\nx-bce-date:" . urlencode($timestamp);
+        $CanonicalHeaders2 = "host:{$host}\nx-bce-date:".urlencode($timestamp);
         $CanonicalString = self::getCanonicalQueryString($header);
         $CanonicalURI = $path;
         $Method = $httpMethod;
         $CanonicalRequest = "{$Method}\n{$CanonicalURI}\n{$CanonicalString}\n{$CanonicalHeaders2}";
         $Signature = hash_hmac('SHA256', $CanonicalRequest, $SigningKey);
-        $Authorization = 'bce-auth-v1/' . self::$AK . "/{$timestamp}/{$expirationPeriodInSeconds}/{$CanonicalHeaders1}/{$Signature}";
+        $Authorization = 'bce-auth-v1/'.self::$AK."/{$timestamp}/{$expirationPeriodInSeconds}/{$CanonicalHeaders1}/{$Signature}";
 
         return $Authorization;
     }
@@ -182,10 +182,10 @@ class BaiduBceOcrSdk
             }
             if (isset($v)) {
                 //对于有值的，编码后放在=号两边
-                $parameterStrings[] = urlencode($k) . '=' . urlencode((string)$v);
+                $parameterStrings[] = urlencode($k).'='.urlencode((string)$v);
             } else {
                 //对于没有值的，只将key编码后放在=号的左边，右边留空
-                $parameterStrings[] = urlencode($k) . '=';
+                $parameterStrings[] = urlencode($k).'=';
             }
         }
         //按照字典序排序
@@ -196,11 +196,15 @@ class BaiduBceOcrSdk
 
     /**
      * 发起POST请求.
+     *
      * @author: dingdayu(614422099@qq.com)
-     * @param string $url
-     * @param array $header
-     * @param string $data
+     *
+     * @param string $url       请求URL
+     * @param array $header     请求头
+     * @param string $data      post内容
+     *
      * @return mixed
+     *
      * @throws \Exception
      */
     public static function curl($url = '', $header = [], $data = '')
