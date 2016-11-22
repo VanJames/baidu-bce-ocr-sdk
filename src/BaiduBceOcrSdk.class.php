@@ -57,7 +57,7 @@ class BaiduBceOcrSdk
             return '/';
         } else {
             //所有的uri必须以'/'开头
-            if ($path[0] == '/') {
+            if ($path[0] === '/') {
                 return self::urlEncodeExceptSlash($path);
             } else {
                 return '/'.self::urlEncodeExceptSlash($path);
@@ -131,11 +131,11 @@ class BaiduBceOcrSdk
      *
      * @author: dingdayu(614422099@qq.com)
      *
-     * @param string $host          请求的域名
-     * @param string $httpMethod    请求类型：POST/GET
-     * @param string $path          请求url路径
-     * @param string $header        Heard请求头
-     * @param string $timestamp     UTC时间
+     * @param string $host       请求的域名
+     * @param string $httpMethod 请求类型：POST/GET
+     * @param string $path       请求url路径
+     * @param string $header     Heard请求头
+     * @param string $timestamp  UTC时间
      *
      * @return string
      */
@@ -168,13 +168,13 @@ class BaiduBceOcrSdk
     public static function getCanonicalQueryString(array $parameters)
     {
         //没有参数，直接返回空串
-        if (count($parameters) == 0) {
+        if (count($parameters) === 0) {
             return '';
         }
         $parameterStrings = [];
         foreach ($parameters as $k => $v) {
             //跳过Authorization字段
-            if (strcasecmp('Authorization', $k) == 0) {
+            if (strcasecmp('Authorization', $k) === 0) {
                 continue;
             }
             if (!isset($k)) {
@@ -182,7 +182,7 @@ class BaiduBceOcrSdk
             }
             if (isset($v)) {
                 //对于有值的，编码后放在=号两边
-                $parameterStrings[] = urlencode($k).'='.urlencode((string)$v);
+                $parameterStrings[] = urlencode($k).'='.urlencode((string) $v);
             } else {
                 //对于没有值的，只将key编码后放在=号的左边，右边留空
                 $parameterStrings[] = urlencode($k).'=';
@@ -199,9 +199,9 @@ class BaiduBceOcrSdk
      *
      * @author: dingdayu(614422099@qq.com)
      *
-     * @param string $url       请求URL
-     * @param array $header     请求头
-     * @param string $data      post内容
+     * @param string $url    请求URL
+     * @param array $header  请求头
+     * @param string $data   post内容
      *
      * @return mixed
      *
