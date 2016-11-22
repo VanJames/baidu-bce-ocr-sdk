@@ -1,7 +1,6 @@
 {
   "name": "dingdayu/baidu-bce-ocr-sdk",
   "description": "baidu bce ocr php.",
-  "version": "0.1.3-dev",
   "type": "library",
   "keywords": [
     "baidu",
