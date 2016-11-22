@@ -2,12 +2,34 @@
 
 百度云图像识别sdk（非官方）
 
+项目地址：https://github.com/dingdayu/baidu-bce-ocr-sdk/
+
+<p align="center">
+<a href="https://travis-ci.org/dingdayu/baidu-bce-ocr-sdk"><img src="https://travis-ci.org/dingdayu/baidu-bce-ocr-sdk.svg?branch=master" alt="Build Status"></a>
+<a href="https://packagist.org/packages/dingdayu/baidu-bce-ocr-sdk"><img src="https://poser.pugx.org/dingdayu/baidu-bce-ocr-sdk/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/dingdayu/baidu-bce-ocr-sdk"><img src="https://poser.pugx.org/dingdayu/baidu-bce-ocr-sdk/v/unstable.svg" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/dingdayu/baidu-bce-ocr-sdk"><img src="https://poser.pugx.org/dingdayu/baidu-bce-ocr-sdk/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/dingdayu/baidu-bce-ocr-sdk"><img src="https://poser.pugx.org/dingdayu/baidu-bce-ocr-sdk/license" alt="License"></a>
+</p>
+
 ## 使用实例
 
 ### composer 安装
 
 ```
 composer require dingdayu/baidu-bce-ocr-sdk
+```
+
+然后引用
+
+```
+require "./vendor/autoload.php";
+date_default_timezone_set('UTC');
+
+$tempfile = "./love.png";
+$file_content = file_get_contents($tempfile);
+$ret = \BadiduBCE\BaiduBceOcrSdk::ocr($file_content);
+var_dump($ret);
 ```
 
 ### 直接下载安装
