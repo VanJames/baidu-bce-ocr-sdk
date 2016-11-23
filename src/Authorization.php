@@ -14,7 +14,7 @@
 
 namespace BadiduBCE;
 
-class BaiduBceOcrSdk
+class Authorization
 {
     /**
      * @var string key
@@ -33,9 +33,6 @@ class BaiduBceOcrSdk
      */
     public function __construct()
     {
-        if (!function_exists('curl_init')) {
-            throw new \Exception('not support openssl_sign', 11001);
-        }
         date_default_timezone_set('UTC');
     }
 
@@ -77,52 +74,6 @@ class BaiduBceOcrSdk
         return str_replace('%2F', '/', urlencode($path));
     }
 
-    /**
-     * ocr图像识别.
-     *
-     * @author: dingdayu(614422099@qq.com)
-     *
-     * @param string $file_content 图像内容，通过file_get_contents/fopen获取
-     *
-     * @return mixed
-     */
-    public static function ocr($file_content = '')
-    {
-        $host = 'word.bj.baidubce.com';
-        $path = '/api/v1/ocr/general';
-        $method = 'POST';
-
-        // 签名参数
-        $palms = [];
-        $timestamp = date('Y-m-d').'T'.date('H:i:s').'Z';
-
-        //生成签名
-        $Authorization = self::getSigner($host, $method, $path, $palms, $timestamp);
-
-        //要识别的测试图片(用file_get_contents获取也可以，读取也行)
-        //$tempfile = "./love.png";
-        //$file_content = file_get_contents($tempfile);
-
-        //base64编码
-        $encoded = base64_encode($file_content);
-        //拼装头部
-        $head = [
-            "host:{$host}",
-            "Authorization:{$Authorization}",
-            "x-bce-date:{$timestamp}",
-            'content-type: application/x-www-form-urlencoded',
-        ];
-
-        //编码image参数内容
-        $data = 'image='.urlencode($encoded);
-
-        $url = 'http://'.$host.$path;
-        $output = self::curl($url, $head, $data);
-        //转换成数组格式
-        $result = json_decode($output, true);
-
-        return $result;
-    }
 
     /**
      * 计算签文.
@@ -176,7 +127,7 @@ class BaiduBceOcrSdk
                 continue;
             }
             if (!isset($k)) {
-                throw new InvalidArgumentException('parameter key should not be null');
+                throw new \InvalidArgumentException('parameter key should not be null');
             }
             if (isset($v)) {
                 //对于有值的，编码后放在=号两边
@@ -192,35 +143,4 @@ class BaiduBceOcrSdk
         return implode('&', $parameterStrings);
     }
 
-    /**
-     * 发起POST请求.
-     *
-     * @author: dingdayu(614422099@qq.com)
-     *
-     * @param string $url    请求URL
-     * @param array  $header 请求头
-     * @param string $data   post内容
-     *
-     * @return mixed
-     *
-     * @throws \Exception
-     */
-    public static function curl($url = '', $header = [], $data = '')
-    {
-        if (!$url) {
-            throw new \Exception('curl: url empty!', 12101);
-        }
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
-        $output = curl_exec($curl);
-        curl_close($curl);
-
-        return $output;
-    }
 }

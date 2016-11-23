@@ -24,7 +24,7 @@ class OcrTest extends PHPUnit_Framework_TestCase
     public function testOcr()
     {
         $file_content = file_get_contents($this->tempfile);
-        $ret = \BadiduBCE\BaiduBceOcrSdk::ocr($file_content);
+        $ret = \BadiduBCE\OCR::general($file_content);
         $this->assertArrayHasKey('words_result_num', $ret, '识别错误');
         $this->assertArrayHasKey('words_result', $ret, '识别错误');
         if (isset($ret['error_code'])) {

@@ -29,7 +29,7 @@ date_default_timezone_set('UTC');
 
 $tempfile = "./love.png";
 $file_content = file_get_contents($tempfile);
-$ret = \BadiduBCE\BaiduBceOcrSdk::ocr($file_content);
+$ret = \BadiduBCE\OCR::general($file_content);
 var_dump($ret);
 ```
 
@@ -43,7 +43,7 @@ date_default_timezone_set('UTC'); // 设置当前时区为UTC
 
 $tempfile = "./love.png";
 $file_content = file_get_contents($tempfile); // 读取文件，另可用fopen
-$ret = \BadiduBCE\BaiduBceOcrSdk::ocr($file_content);
+$ret = \BadiduBCE\OCR::general($file_content);
 var_dump($ret);
 ```
 
