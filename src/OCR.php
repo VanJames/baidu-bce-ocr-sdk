@@ -107,5 +107,4 @@ class OCR
         //转换成数组格式并返回
         return json_decode($output, true);
     }
-
 }

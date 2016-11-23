@@ -51,7 +51,7 @@ class HTTP
         curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
         $output = curl_exec($curl);
         curl_close($curl);
+
         return $output;
     }
-
 }
