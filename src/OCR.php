@@ -63,6 +63,15 @@ class OCR
         return $result;
     }
 
+    /**
+     * 身份证卡片识别.
+     *
+     * @author: dingdayu(614422099@qq.com)
+     *
+     * @param string $file_content 身份证卡片图片
+     *
+     * @return mixed
+     */
     public static function idcard($file_content = '')
     {
         $host = 'word.bj.baidubce.com';
@@ -95,9 +104,8 @@ class OCR
 
         $url = 'http://'.$host.$path;
         $output = HTTP::post($url, $head, $data);
-        //转换成数组格式
-        $result = json_decode($output, true);
-
-        return $result;
+        //转换成数组格式并返回
+        return json_decode($output, true);
     }
+
 }

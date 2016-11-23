@@ -74,7 +74,6 @@ class Authorization
         return str_replace('%2F', '/', urlencode($path));
     }
 
-
     /**
      * 计算签文.
      *
@@ -142,5 +141,4 @@ class Authorization
         //使用'&'符号连接它们
         return implode('&', $parameterStrings);
     }
-
 }

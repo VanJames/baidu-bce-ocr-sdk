@@ -53,4 +53,5 @@ class HTTP
         curl_close($curl);
         return $output;
     }
+
 }
