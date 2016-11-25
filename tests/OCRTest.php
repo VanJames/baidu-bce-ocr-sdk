@@ -12,7 +12,7 @@
 // | Explain: 图像识别测试类
 // +----------------------------------------------------------------------
 
-class OcrTest extends PHPUnit_Framework_TestCase
+class OCRTest extends PHPUnit_Framework_TestCase
 {
     private $tempfile = './tests/love.png';
 
