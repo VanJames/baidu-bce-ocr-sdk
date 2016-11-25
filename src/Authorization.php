@@ -12,7 +12,7 @@
 // | Explain: 图像识别测试类
 // +----------------------------------------------------------------------
 
-namespace BadiduBCE;
+namespace BaiduBCE;
 
 class Authorization
 {

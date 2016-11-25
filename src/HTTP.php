@@ -12,7 +12,7 @@
 // | Explain: 请在这里填写说明
 // +----------------------------------------------------------------------
 
-namespace BadiduBCE;
+namespace BaiduBCE;
 
 class HTTP
 {
