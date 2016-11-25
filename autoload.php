@@ -10,7 +10,7 @@
 
 class Autoloader
 {
-    const NAMESPACE_PREFIX = 'BadiduBCE\\';
+    const NAMESPACE_PREFIX = 'BaiduBCE\\';
 
     /**
      * 向PHP注册在自动载入函数.
