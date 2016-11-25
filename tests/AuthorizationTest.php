@@ -26,6 +26,6 @@ class AuthorizationTest extends PHPUnit_Framework_TestCase
 
         //生成签名
         $signer = \BaiduBCE\Authorization::getSigner($host, $method, $path, $palms, $timestamp);
-        $this->assertNotEmpty($signer, "签名错误");
+        $this->assertNotEmpty($signer, '签名错误');
     }
 }

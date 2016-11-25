@@ -15,7 +15,7 @@
 class HTTPTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * 测试post
+     * 测试post.
      *
      * @author: dingdayu(614422099@qq.com)
      */
