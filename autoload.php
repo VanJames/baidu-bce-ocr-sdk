@@ -34,7 +34,9 @@ class Autoloader
         $namespacePrefixStrlen = strlen(self::NAMESPACE_PREFIX);
         if (strncmp(self::NAMESPACE_PREFIX, $className, $namespacePrefixStrlen) === 0) {
             $classNameArray = explode('\\', $className);
-            $filePath = __DIR__.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.$classNameArray[1].'.php';
+            unset($classNameArray[0]);
+            $path = implode(DIRECTORY_SEPARATOR,$classNameArray);
+            $filePath = __DIR__.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.$path.'.php';
             if (file_exists($filePath)) {
                 require_once $filePath;
             }
